@@ -12,14 +12,7 @@ db = FAISS.load_local(DB_PATH, embeddings, allow_dangerous_deserialization=True)
 
 retriever = db.as_retriever(search_kwargs={"k":3})
 
-query = "Explain the basics of RAG in simple terms"
-
-response_no_rag = ollama.generate(
-    model = "phi3:latest",
-    prompt = query
-)
-
-print("Without RAG:\n", response_no_rag)
+query = "Hi How are you doing?"
 
 docs = retriever._get_relevant_documents(query, run_manager=None)
 
